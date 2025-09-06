@@ -1,0 +1,71 @@
+{
+  "name": "stock-manager",
+  "version": "0.1.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pietr0davila/Stock-Manager.git"
+  },
+  "author": "pietr0davila",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/pietr0davila/Stock-Manager/issues"
+  },
+  "homepage": "https://github.com/pietr0davila/Stock-Manager#readme",
+  "description": "Simple prerelease Stock Manager",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.8.3",
+    "@electron-forge/maker-deb": "^7.8.3",
+    "@electron-forge/maker-dmg": "^7.8.3",
+    "@electron-forge/maker-squirrel": "^7.8.3",
+    "@electron-forge/maker-zip": "^7.8.3",
+    "@electron-forge/publisher-github": "^7.8.3",
+    "electron": "^38.0.0",
+    "node-abi": "^4.14.0"
+  },
+  "config": {
+    "forge": {
+      "makers": [
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-dmg"
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "pietr0davila",
+              "name": "Stock-Manager"
+            },
+            "prerelease": true,
+            "draft": true
+          }
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "wine": "^0.9.13"
+  }
+}

@@ -1,0 +1,202 @@
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.content-header .content-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.content-header .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.content-header .btn-primary i {
+  font-size: 0.9rem;
+}
+
+.content-header .btn-primary:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Products Table */
+
+.products-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.products-table thead {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.products-table th, .products-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.products-table tbody tr:nth-child(even) {
+  background: #f3f4f6;
+}
+
+.products-table tbody tr:hover {
+  background: #e0e7ff;
+  cursor: pointer;
+}
+
+.products-table th:first-child,
+.products-table td:first-child {
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+}
+
+.products-table th:last-child,
+.products-table td:last-child {
+  border-top-right-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+/* Delete Button */
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: #fff;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(231, 76, 60, 0.4);
+
+    transition: 
+        background 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn-delete i {
+    font-size: 1rem;
+}
+
+/* Hover com brilho */
+.btn-delete:hover {
+    background: linear-gradient(135deg, #ff6b6b, #e74c3c);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 10px rgba(231, 76, 60, 0.5);
+}
+
+/* Active (clicado) */
+.btn-delete:active {
+    transform: translateY(1px) scale(0.95);
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.4);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+
+.status-in-stock {
+  background: var(--success);
+}
+
+.status-low-stock {
+  background: var(--warning);
+}
+
+.status-out-of-stock {
+  background: var(--danger);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: var(--radius);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn i {
+  margin: 0;
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .products-table th, .products-table td {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gerenciamento de Estoque</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets/css/root.css">
+    <script defer type="module" src="assets/scripts/listeners.js"></script>
+    <script defer type="module" src="assets/scripts/dashboard/getProductsLength.js"></script>
+    <script defer type="module" src="assets/scripts/dashboard/getTotalStock.js"></script>
+    <script defer type="module" src="assets/scripts/dashboard/getTotalCash.js"></script>
+</head>
+<body class="dashboard">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar activate">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-boxes"></i>
+                    <a href="#" class="anchor-default"><span>EstoqueApp</span></a>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item anchor-default activate">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="products.html" class="nav-item anchor-default" data-section="products">
+                    <i class="fas fa-box"></i>
+                    <span>Produtos</span>
+                </a>
+                <a href="add-products.html" class="nav-item anchor-default" data-section="add-product">
+                    <i class="fas fa-plus"></i>
+                    <span>Adicionar Produto</span>
+                </a>
+                <a href="sale-mode.html" class="nav-item anchor-default" data-section="add-product">
+                    <i class="fas fa-dollar"></i>
+                    <span>Modo de vendas</span>
+                </a>
+                <!-- <a href="#reports" class="nav-item anchor-default" data-section="reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Relatórios</span>
+                </a> -->
+                <!-- <a href="settings.html" class="nav-item anchor-default" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            -->
+            </nav> 
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <!-- <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar produtos...">
+                    </div> -->
+                    <!-- <button class="notification-btn" id="notification-button">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notification-badge">3</span>
+                    </button> -->
+                    <!-- <div class="notification-container deactivate" id="notification-container">
+                        <div class="alert-item notification-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <p><strong>Produto XYZ789</strong></p>
+                                <p>Reposição realizada com sucesso</p>
+                            </div>
+                        </div>
+                        <div class="alert-item notification-item">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div>
+                                <p><strong>Produto ABC123</strong></p>
+                                <p>Estoque baixo: apenas 5 unidades</p>
+                            </div>
+                        </div>
+                        <div class="alert-item notification-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <p><strong>Pedido #1001</strong></p>
+                                <p>Aguardando reposição há 3 dias</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </header>
+            
+            <!-- Dashboard Section -->
+            <section class="content-section activate">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total de Produtos</h3>
+                            <p class="stat-number" id="allProducts">0</p>
+                            <!-- <span class="stat-change neutral">0% esse mês</span> -->
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Estoque total</h3>
+                            <p class="stat-number" id="total-stock">0</p>
+                            <!-- <span class="stat-change negative">Requer atenção</span> -->
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Estoque Baixo</h3>
+                            <p class="stat-number" id="low-stock">0</p>
+                            <span class="stat-change" id="low-stock-span"></span>
+                        </div>
+                    </div> 
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Valor Total em Estoque</h3>
+                            <p class="stat-number" id="total-cash">R$0,00</p>
+                            <!-- <span class="stat-change positive">+8% este mês</span> -->
+                        </div>
+                    </div>
+                    <!-- <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Pedidos Pendentes</h3>
+                            <p class="stat-number">7</p>
+                            <span class="stat-change neutral">2 atrasados</span>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="chart-container">
+                        <h3>Movimentação de Estoque</h3>
+                        <div class="chart-placeholder" onclick="window.location.href='development.html'">
+                            <div style="text-align: center;">
+                                <i class="fas fa-chart-line" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                                <p>Gráfico de movimentação será exibido aqui</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+</body>
+</html>

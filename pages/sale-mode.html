@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modo de Vendas - EstoqueApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/root.css">
+    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets/css/vendas.css">
+    <script defer type="module" src="assets/scripts/dom.js"></script>
+    <script type="module" src="assets/scripts/sales/register.js"></script>
+    <script defer type="module" src="assets/scripts/listeners.js"></script>
+</head>
+<body class="sales-mode">
+    <main class="main-content">
+        <!-- Breadcrumb -->
+        <header class="header">
+        
+        <div class="header-content">
+            <div class="breadcrumb">
+                <a href="dashboard.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Adicionar Produto</span>
+            </div>
+        </div>
+            <a href="dashboard.html" class="logo">
+                <i class="fas fa-boxes"></i>
+                <span>EstoqueApp</span>
+            </a>
+        </header>
+
+        <div id="error-messages" class="alert alert-error deactivate">
+            <i class="fas fa-exclamation-circle"></i>
+            <ul id="error-list">
+                <li>Exemplo de erro</li>
+            </ul>
+        </div>
+
+        <div id="success-messages" class="alert alert-success deactivate">
+            <i class="fas fa-check-circle"></i>
+            <span>Venda realizada com sucesso!</span>
+        </div>
+
+        <!-- Sales Form -->
+        <div class="form-card">
+            <h2>Registrar Venda</h2>
+            <form>
+                <div class="form-group">
+                    <label for="product-code">Código do Produto</label>
+                    <input type="number" id="product-code" name="product-code" placeholder="Digite o código do produto" min="1000">
+                </div>
+                <div class="product-display">
+                    <label>Produto Selecionado:</label>
+                    <span id="product-name">Produto Inválido</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantidade</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Digite a quantidade">
+                </div>
+                <div class="form-group" style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn" id="register-sale-button">Registrar Venda</button>
+                    <button type="reset" class="btn btn-clear">Limpar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

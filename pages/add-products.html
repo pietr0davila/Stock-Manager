@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produto - Sistema de Gerenciamento de Estoque</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/add-products.css">
+    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets/css/root.css">
+    <script defer type="module" src="assets/scripts/listeners.js"></script>
+    <script defer type="module" src="assets/scripts/dom.js"></script>
+</head>
+<body class="add-product">
+    <header class="header">
+        
+        <div class="header-content">
+            <div class="breadcrumb">
+                <a href="dashboard.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Adicionar Produto</span>
+            </div>
+        </div>
+            <a href="dashboard.html" class="logo">
+                <i class="fas fa-boxes"></i>
+                <span>EstoqueApp</span>
+            </a>
+            <a href="sale-mode.html" class="nav-item anchor-default" data-section="add-product">
+                <i class="fas fa-dollar"></i>
+                <span>Modo de vendas</span>
+            </a>
+        </header>
+        
+        <div class="container">
+            <h1 class="page-title">Adicionar Novo Produto</h1>
+        <p class="page-subtitle">Preencha as informações abaixo para cadastrar um novo produto no sistema</p>
+
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span>Campos marcados com <span class="required">*</span> são obrigatórios</span>
+        </div>
+
+        <div class="form-container">
+            <form class="product-form" method="get" id="add-form">
+                <div class="form-help" style="font-size: 20px;">
+                    Caracteres não permitidos: 
+                        (--|<|>|"|'|`|;|\\)
+                </div>
+                <div id="error-messages" class="alert alert-error deactivate">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <ul id="error-list">
+                    </ul>
+                </div>
+                <div id="success-messages" class="alert alert-success deactivate">
+                    <i class="fas fa-check-circle"></i>
+                    <span></span>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="productCode">Código do Produto <span class="required">*</span></label>
+                        <div class="input-group">
+                            <i class="fas fa-barcode"></i>
+                            <input type="number" id="productCode" name="productCode" placeholder="12345" required min="1000" max="99999" value="1000">
+                        </div class="form-grid">
+                        <div class="form-help">Código único para identificação do produto<br>
+                            <ul>
+                                <li>4-5 Caracteres<br>
+                                <li>Somente números<br>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productName">Nome do Produto <span class="required">*</span></label>
+                        <div class="input-group">
+                            <i class="fas fa-tag"></i>
+                            <input type="text" id="productName" name="productName" placeholder="Ex: Notebook Dell Inspiron" required>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="category">Categoria <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="eletronicos">Eletrônicos</option>
+                            <option value="perifericos">Periféricos</option>
+                            <option value="acessorios">Acessórios</option>
+                            <option value="moveis">Móveis</option>
+                            <option value="escritorio">Escritório</option>
+                        </select>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="stock">Estoque inicial<span class="required">*</span></label>
+                        <div class="input-group">
+                            <i class="fas fa-cubes"></i>
+                            <input type="number" id="stock" name="stock" min="0" value="0" placeholder="0" required>
+                        </div>
+                        <div class="form-help">Quantidade disponível em estoque</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Preço Unitário (R$) <span class="required">*</span></label>
+                        <div class="input-group">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="price" name="price" step="0.01" min="0" placeholder="0,00" required value="5.00">
+                        </div>
+                        <div class="form-help">
+                            Preço por unidade do produto
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="minStock">Estoque Mínimo <span class="required">*</span></label>
+                        <div class="input-group">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <input type="number" id="minStock" name="minStock" min="0" placeholder="5" required value="10">
+                        </div>
+                        <div class="form-help">Quantidade mínima para alerta de reposição</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="supplier">Fornecedor</label>
+                        <div class="input-group">
+                            <i class="fas fa-truck"></i>
+                            <input type="text" id="supplier" name="supplier" placeholder="Nome do fornecedor">
+                        </div>
+                        <div class="form-help">
+                            Opção recomendada para organização dos produtos
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="description">Descrição do Produto</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Descreva as características e especificações do produto..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar
+                    </button>
+                    <!-- <button type="button" class="btn btn-outline" id="preview-btn">
+                        <i class="fas fa-eye"></i>
+                        Pré-visualizar
+                    </button> -->
+                    <button type="submit" class="btn btn-primary" id="send-form">
+                        <i class="fas fa-save"></i>
+                        Salvar Produto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
